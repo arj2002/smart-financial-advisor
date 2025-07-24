@@ -2,7 +2,7 @@
 
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { AgentExecutor } from "langchain/agents";
-import tools from "../tools";
+import tools from "../tools/index.js";
 import { investmentPrompt } from "../promptTemplates";
 
 // Load environment variables
