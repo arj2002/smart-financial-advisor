@@ -1,10 +1,11 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require("cors");
-const authRoutes = require('./routes/authRoutes');
-const profileRoutes = require('./routes/profileRoutes');
-const agentRoutes = require('./routes/agentRoutes');
-const chatRoutes = require('./routes/chatRoutes');
+// server.js (ES Module version)
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import authRoutes from './routes/authRoutes.js';
+import profileRoutes from './routes/profileRoutes.js';
+import agentRoutes from './routes/agentRoutes.js';
+import chatRoutes from './routes/chatRoutes.js';
 
 dotenv.config();
 const app = express();
