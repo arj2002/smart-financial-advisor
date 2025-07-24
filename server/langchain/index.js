@@ -1,5 +1,9 @@
-import { getProfileTool } from "./getProfileTool.js";
-import { getMarketDataTool } from "./getMarketDataTool.js";
-import { simulateAllocationTool } from "./simulateAllocationTool.js";
+const getProfileTool = require("./getProfileTool");
+const getMarketDataTool = require("./getMarketDataTool");
+const simulateAllocationTool = require("./simulateAllocationTool");
 
-export default [getProfileTool, getMarketDataTool, simulateAllocationTool];
+module.exports = {
+  getProfileTool,
+  getMarketDataTool,
+  simulateAllocationTool,
+};
