@@ -1,11 +1,10 @@
-// server.js (ES Module version)
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import authRoutes from './routes/authRoutes.js';
-import profileRoutes from './routes/profileRoutes.js';
-import agentRoutes from './routes/agentRoutes.js';
-import chatRoutes from './routes/chatRoutes.js';
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require("cors");
+const authRoutes = require('./routes/authRoutes');
+const profileRoutes = require('./routes/profileRoutes');
+const agentRoutes = require('./routes/agentRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 
 dotenv.config();
 const app = express();
@@ -19,4 +18,4 @@ app.use('/api/agent', agentRoutes);
 app.use('/api/chat', chatRoutes);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(Server running on port ${PORT}));
