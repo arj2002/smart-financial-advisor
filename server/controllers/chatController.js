@@ -1,6 +1,6 @@
-const { advisorAgent } = require('../langchain/agents/financialAdvisorAgent');
+const { advisorAgent } = await import('../langchain/agents/financialAdvisorAgent');
 // or
-const { advisorGraph } = require('../langchain/graphs/financialAdvisorGraph');
+const { advisorGraph } = await import('../langchain/graphs/financialAdvisorGraph');
 
 exports.askAgent = async (req, res) => {
   const { question } = req.body;
