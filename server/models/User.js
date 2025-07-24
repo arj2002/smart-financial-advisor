@@ -1,9 +1,0 @@
-const mongoose = require('mongoose');
-
-const userSchema = new mongoose.Schema({
-  username: String,
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }, // stored as a hashed password
-});
-
-module.exports = mongoose.model('User', userSchema);
