@@ -3,7 +3,7 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { AgentExecutor } from "langchain/agents";
 import tools from "../index.js";
-import { investmentPrompt } from "../promptTemplates";
+import { investmentPrompt } from "../promptTemplates.js";
 
 // Load environment variables
 import "dotenv/config";
