@@ -15,7 +15,7 @@ const Recommendation = () => {
 
     const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/agent/recommendation`, {
       headers: {
-        Authorization: `Bearer ${token}`, // ✅ Include token in headers
+        Authorization: `Bearer ${localStorage.getItem('token')}`, // ✅ Include token in headers
       },
     });
 
