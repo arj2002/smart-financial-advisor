@@ -1,4 +1,4 @@
-const { Tool } = require("langchain/tools");
+import { Tool } from "langchain/tools";
 
 const simulateAllocationTool = new Tool({
   name: "simulate_allocation",
@@ -9,15 +9,18 @@ const simulateAllocationTool = new Tool({
       let allocation = {};
       let expectedReturn = 0;
 
-      if (riskLevel.toLowerCase() === "high") {
-        allocation = { stocks: 70, mutualFunds: 20, fixedDeposits: 10 };
-        expectedReturn = 12;
-      } else if (riskLevel.toLowerCase() === "medium") {
-        allocation = { stocks: 40, mutualFunds: 40, fixedDeposits: 20 };
-        expectedReturn = 9;
-      } else {
-        allocation = { stocks: 10, mutualFunds: 40, fixedDeposits: 50 };
-        expectedReturn = 6;
+      switch (riskLevel.toLowerCase()) {
+        case "high":
+          allocation = { stocks: 70, mutualFunds: 20, fixedDeposits: 10 };
+          expectedReturn = 12;
+          break;
+        case "medium":
+          allocation = { stocks: 40, mutualFunds: 40, fixedDeposits: 20 };
+          expectedReturn = 9;
+          break;
+        default:
+          allocation = { stocks: 10, mutualFunds: 40, fixedDeposits: 50 };
+          expectedReturn = 6;
       }
 
       return JSON.stringify({ allocation, expectedReturn });
@@ -27,4 +30,4 @@ const simulateAllocationTool = new Tool({
   },
 });
 
-module.exports = simulateAllocationTool;
+export default simulateAllocationTool;
