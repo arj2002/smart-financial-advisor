@@ -18,28 +18,30 @@ const Signup = () => {
     }));
   };
 
-  const handleSignup = async (e) => {
-    e.preventDefault();
+const handleSignup = async (e) => {
+  e.preventDefault();
 
-    try {
-      // ✅ Step 1: Sign up the user
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, formData);
+  try {
+    console.log('Submitting signup with:', formData); // Debug
 
-      // ✅ Step 2: Login immediately after signup
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
-        email: formData.email,
-        password: formData.password,
-      });
+    // Step 1: Sign up
+    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, formData);
 
-      // ✅ Step 3: Redirect to dashboard
-      localStorage.setItem('token', loginRes.data.token);
+    // Step 2: Login
+    const loginRes = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
+      email: formData.email,
+      password: formData.password,
+    });
 
-     navigate('/dashboard');
-    } catch (err) {
-      console.error('Signup or login failed:', err.response?.data || err.message);
-      alert('Signup or login failed. Please check your credentials or try again.');
-    }
-  };
+    // Step 3: Save token and redirect
+    localStorage.setItem('token', loginRes.data.token);
+    navigate('/dashboard');
+
+  } catch (err) {
+    console.error('Signup or login failed:', err.response?.data || err.message);
+    alert('Signup or login failed. Please check your credentials or try again.');
+  }
+};
 
   return (
     <form onSubmit={handleSignup} className="max-w-md mx-auto mt-10 p-6 bg-white shadow rounded">
