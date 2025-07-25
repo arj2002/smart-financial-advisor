@@ -32,7 +32,9 @@ const Signup = () => {
       });
 
       // ✅ Step 3: Redirect to dashboard
-      navigate('/dashboard');
+      localStorage.setItem('token', loginRes.data.token);
+
+     navigate('/dashboard');
     } catch (err) {
       console.error('Signup or login failed:', err.response?.data || err.message);
       alert('Signup or login failed. Please check your credentials or try again.');
