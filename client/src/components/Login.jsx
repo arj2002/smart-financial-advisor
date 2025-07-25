@@ -16,16 +16,12 @@ const handleLogin = async (e) => {
     });
 
     if (response.status === 200) {
-      localStorage.setItem('token', response.data.token); // ✅ Save token
-      navigate('/dashboard');
-    } else {
-      alert('Login failed. Please try again.');
-    }
-  } catch (err) {
-    console.error('Login error:', err);
-    alert('Login failed. Please check your credentials or try again later.');
-  }
-};
+  console.log('Login response:', response.data); // 👈 Log the full response
+  localStorage.setItem('token', response.data.token);
+  console.log('Saved token:', response.data.token); // 👈 Confirm what’s saved
+  navigate('/dashboard');
+}
+
 
   return (
     <form
