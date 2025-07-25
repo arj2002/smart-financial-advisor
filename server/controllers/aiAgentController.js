@@ -1,11 +1,10 @@
 import Profile from '../models/FinancialProfile.js';
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const marketData = await import('../data/market_data.json', {
   assert: { type: 'json' }
 }).then(mod => mod.default);
-
 
 export const getRecommendation = async (req, res) => {
   try {
@@ -24,9 +23,9 @@ export const getRecommendation = async (req, res) => {
     }[riskAppetite];
 
     const expectedReturn =
-      (avg(data.stocks.map(s => s.growth_pct_yoy)) * allocation.stocks +
-        avg(data.mutual_funds.map(m => m.return_pct_3y_cagr)) * allocation.mutualFunds +
-        avg(data.fixed_deposits.map(f => f.rate_pct)) * allocation.fixedDeposits) / 100;
+      (avg(marketData.stocks.map(s => s.growth_pct_yoy)) * allocation.stocks +
+        avg(marketData.mutual_funds.map(m => m.return_pct_3y_cagr)) * allocation.mutualFunds +
+        avg(marketData.fixed_deposits.map(f => f.rate_pct)) * allocation.fixedDeposits) / 100;
 
     res.json({ allocation, expectedReturn: expectedReturn.toFixed(2) });
   } catch (error) {
