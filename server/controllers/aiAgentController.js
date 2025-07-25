@@ -2,7 +2,9 @@ import Profile from '../models/FinancialProfile.js';
 const fs = require('fs');
 const path = require('path');
 
-const marketData = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/market_data.json'), 'utf-8'));
+const marketData = await import('../data/market_data.json', {
+  assert: { type: 'json' }
+}).then(mod => mod.default);
 
 
 export const getRecommendation = async (req, res) => {
