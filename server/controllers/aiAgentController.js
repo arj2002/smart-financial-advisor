@@ -12,7 +12,8 @@ const marketData = JSON.parse(
 
 export const getRecommendation = async (req, res) => {
   try {
-    const profile = await Profile.findOne({ userId: req.user });
+     console.log('🔐 Authenticated user ID:', req.user);
+    const profile = await Profile.findOne({ user: req.user });
 
     if (!profile) {
       return res.status(404).json({ error: "Financial profile not found." });
