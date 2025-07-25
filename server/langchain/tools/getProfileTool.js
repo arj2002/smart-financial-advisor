@@ -1,5 +1,5 @@
-const { Tool } = require("langchain/tools");
-const FinancialProfile = require("../../models/FinancialProfile");
+import { Tool } from "langchain/tools";
+import FinancialProfile from "../../models/FinancialProfile.js";
 
 const getProfileTool = new Tool({
   name: "get_user_profile",
@@ -15,4 +15,4 @@ const getProfileTool = new Tool({
   },
 });
 
-module.exports = getProfileTool;
+export default getProfileTool;
