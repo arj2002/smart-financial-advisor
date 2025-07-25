@@ -1,5 +1,5 @@
 import Profile from '../models/FinancialProfile.js';
-import data from '../data/market_data.json' assert { type: "json" };
+import data from '../data/market_data.json';
 
 export const getRecommendation = async (req, res) => {
   try {
