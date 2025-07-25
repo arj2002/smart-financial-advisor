@@ -7,25 +7,25 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
-        email,
-        password,
-      });
+const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
+      email,
+      password,
+    });
 
-      if (response.status === 200) {
-        // You can optionally store token or user info here
-        navigate('/dashboard');
-      } else {
-        alert('Login failed. Please try again.');
-      }
-    } catch (err) {
-      console.error('Login error:', err);
-      alert('Login failed. Please check your credentials or try again later.');
+    if (response.status === 200) {
+      localStorage.setItem('token', response.data.token); // ✅ Save token
+      navigate('/dashboard');
+    } else {
+      alert('Login failed. Please try again.');
     }
-  };
+  } catch (err) {
+    console.error('Login error:', err);
+    alert('Login failed. Please check your credentials or try again later.');
+  }
+};
 
   return (
     <form
