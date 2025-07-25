@@ -6,19 +6,27 @@ const Recommendation = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchRecommendation = async () => {
-    setLoading(true);
-    setError(null);
+ const fetchRecommendation = async () => {
+  setLoading(true);
+  setError(null);
 
-    try {
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/agent/recommendation`);
-      setRecommendation(res.data);
-    } catch (err) {
-      setError('❌ Failed to fetch recommendation. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const token = localStorage.getItem('token'); // ✅ Retrieve token
+
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/agent/recommendation`, {
+      headers: {
+        Authorization: `Bearer ${token}`, // ✅ Include token in headers
+      },
+    });
+
+    setRecommendation(res.data);
+  } catch (err) {
+    console.error(err);
+    setError('❌ Failed to fetch recommendation. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     fetchRecommendation();
