@@ -11,7 +11,7 @@ const Recommendation = () => {
     setError(null);
 
     try {
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/recommendation`);
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/agent`);
       setRecommendation(res.data);
     } catch (err) {
       setError('❌ Failed to fetch recommendation. Please try again.');
