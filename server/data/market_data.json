@@ -1,0 +1,5 @@
+{
+  "stocks": [{ "growth_pct_yoy": 10.5 }, { "growth_pct_yoy": 15.2 }],
+  "mutual_funds": [{ "return_pct_3y_cagr": 14.8 }, { "return_pct_3y_cagr": 9.2 }],
+  "fixed_deposits": [{ "rate_pct": 6.0 }, { "rate_pct": 7.1 }]
+}
