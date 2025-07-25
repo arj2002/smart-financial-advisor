@@ -25,6 +25,8 @@ const ProfileForm = () => {
       alert('Profile submitted!');
     } catch (err) {
       console.error('Submission failed:', err);
+      console.log('Submitting profile:', formData);
+
       setError('Error saving profile. Please try again.');
     } finally {
       setLoading(false);
